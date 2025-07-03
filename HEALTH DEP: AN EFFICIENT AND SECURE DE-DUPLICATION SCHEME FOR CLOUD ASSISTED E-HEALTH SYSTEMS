@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cloud Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/georgia.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+<style type="text/css">
+<!--
+.style1 {font-size: 23px}
+.style3 {font-size: 18}
+.style4 {
+	color: #FF0000;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html" class="style1"><span class="style3"><a href="index.html" class="style1">HealthDep An Efficient and Secure Deduplication Scheme for Cloud-Assisted eHealth Systems</a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="P_Login.jsp">Patient</a></li>
+          <li><a href="D_Login.jsp">Doctor</a></li>
+          <li class="active"><a href="A_Login.jsp">CloudServer</a></li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div>
+          <h2 class="style4">CloudServer Login !!!</h2>
+          <p><img src="../A Three Layer Privacy Preserving Cloud Storage Scheme/images/login.jpg" width="177" height="131" /></p>
+          <form action="A_Authentication.jsp" method="post" id="leavereply">
+            <label for="name"> <br />
+              <span class="style4">Name (required)&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; </span></label>
+            <span class="style4">
+            <input name="userid" type="text" class="box" id="name"/>
+            <label for="email"><br />
+            <br />
+            Password (required)</label>
+            </span>
+            <strong>
+            <label for="email"></label>
+            </strong>
+            <label for="email"> &nbsp;&nbsp; </label>
+            <input type="password" id="pass" name="pass" class="box" />
+            <p>&nbsp;</p>
+            <p>
+              <input name="imageField" type="submit"  class="LOGIN" id="imageField" value="Login" />
+              <input type="reset" name="imageField" id="imageField"  class="RESET" />
+            </p>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star">Menu</h2>
+          <ul class="sb_menu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="P_Login.jsp">Patient</a></li>
+			<li><a href="D_Login.jsp">Doctor</a></li>
+			<li><a href="A_Login.jsp">Cloud</a></li>
+          </ul>
+        </div>
+        <div class="gadget">
+          <h2 class="star">&nbsp;</h2>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg"></div>
+  <div class="footer"></div>
+</div>
+<div align=center></div>
+</body>
+</html>
+A_Main.jsp
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+	<%@page import ="java.util.*"%>
+<%@ include file="connect.jsp" %>
+    <%@page 
+import ="java.util.*,java.security.Key,java.util.Random,javax.crypto.Cipher,javax.crypto.spec.SecretKeySpec,org.bouncycastle.util.encoders.Base64"%>
+    <%@page import="java.sql.*,java.util.Random,java.io.PrintStream,java.io.FileOutputStream,java.io.FileInputStream,java.security.DigestInputStream,java.math.BigInteger,java.security.MessageDigest,java.io.BufferedInputStream" %>
+<%@page 
+import ="java.security.Key,java.security.KeyPair,java.security.KeyPairGenerator,javax.crypto.Cipher"%>
+ <%@page 
+import ="java.util.*,java.text.SimpleDateFormat,java.util.Date,java.io.FileInputStream,java.io.FileOutputStream,java.io.PrintStream"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=application.getAttribute("docname")%> (Doctor)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/georgia.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+<style type="text/css">
+<!--
+.style1 {font-size: 23px}
+.style2 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html" class="style1"><a href="index.html" class="style1">HealthDep An Efficient and Secure Deduplication Scheme for Cloud-Assisted eHealth Systems</a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="D_Main.jsp">Hi <%=application.getAttribute("docname")%> !! (Doctor)</a></li>
+          <li><a href="D_Login.jsp">Logout</a></li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div >
+          <h2><span>Hi <%=application.getAttribute("docname")%> !! </span></h2>
+          <p><span class="style2">Role : (Doctor)</span><img src="images/img2.jpg" width="613" height="154" alt="" />          </p>
+          <p align="justify"><span class="style2"></span></p>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star">Doctor Menu</h2>
+          <ul class="sb_menu">
+			<li><a href="D_Main.jsp">Home</a></li>
+			<li><a href="D_ViewProfile.jsp">View Profile</a></li>
+			<li><a href="D_AddTreatment.jsp">Search From Cloud and Add Treatment</a></li>
+			<li><a href="D_SchedulePatients.jsp">Search From Cloud and Schedule Patients</a></li>
+			<li><a href="D_ViewSCH_Patients.jsp">Search From Cloud and View Scheduled Patients</a></li>
+			<li><a href="D_Login.jsp">Logout</a></li>
+          </ul>
+        </div>
+        <div class="gadget">
+          <h2 class="star">&nbsp;</h2>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg"></div>
+  <div class="footer"></div>
+</div>
+<div align=center></div>
+</body>
+</html>
+D_Register.jsp
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+	<%@page import ="java.util.*"%>
+<%@ include file="connect.jsp" %>
+    <%@page 
+import ="java.util.*,java.security.Key,java.util.Random,javax.crypto.Cipher,javax.crypto.spec.SecretKeySpec,org.bouncycastle.util.encoders.Base64"%>
+    <%@page import="java.sql.*,java.util.Random,java.io.PrintStream,java.io.FileOutputStream,java.io.FileInputStream,java.security.DigestInputStream,java.math.BigInteger,java.security.MessageDigest,java.io.BufferedInputStream" %>
+<%@page
+ import ="java.security.Key,java.security.KeyPair,java.security.KeyPairGenerator,javax.crypto.Cipher"%>
+ <%@page 
+import="java.util.*,java.text.SimpleDateFormat,java.util.Date,java.io.FileInputStream,java.io.FileOutputStream,java.io.PrintStream"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Doctor Register</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/georgia.js"></script>
+<script type="text/javascript" src="js/cuf_run.js"></script>
+<style type="text/css">
+<!--
+.style1 {font-size: 23px}
+.style3 {color: #FFFF00; font-weight: bold; }
+-->
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html" class="style1"><a href="index.html" class="style1">HealthDep An Efficient and Secure Deduplication Scheme for Cloud-Assisted eHealth Systems</a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="P_Login.jsp">Patient</a></li>
+          <li class="active"><a href="D_Login.jsp">Doctor</a></li>
+          <li><a href="A_Login.jsp">Cloud</a></li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div >
+          <h2><span>Doctor Register </span>!!!</h2>
+          <p><img src="../A Three Layer Privacy Preserving Cloud Storage Scheme/images/Register.jpg" width="228" height="164" /></p>
+          <form action="D_RegisterAuthentication.jsp" method="post" id="" enctype="multipart/form-data">
+            <label for="name"> </label>
+            <table width="590" height="524" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="259" bgcolor="#FF0000" scope="row"><div align="left" class="style3"> Name (required) : </div></td>
+                <td width="343"><input id="name" name="userid" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" ><div align="left" class="style3">Password (required) : </div></td>
+                <td><input type="password" id="password" name="pass" class="text" /></td>
+              </tr>
+			  <tr>
+				<%
+				ArrayList hosp=new ArrayList();
+				ArrayList dep=new ArrayList();				
+				String query="select * from  hospital ";
+				Statement st=connection.createStatement();
+				ResultSet rs =st.executeQuery(query);
+				while(rs.next())
+				{
+					String hos=rs.getString(2);
+					hosp.add(hos);
+				}
+				String query1="select * from  department ";
+				Statement st1=connection.createStatement();
+				ResultSet rs1 =st1.executeQuery(query1);
+				while(rs1.next())
+				{
+					String dept=rs1.getString(2);
+					dep.add(dept);
+				}
+				%>
+                <td bgcolor="#FF0000" scope="row"><div align="left" class="style3">Select Hospital (required) : 
+                </div></td>
+                <td><select id="select" name="hospital" class="text">
+                  <option>-Select-</option>
+                  <%for(int i=0;i<hosp.size();i++){%>
+                  <option><%=hosp.get(i)%></option>
+                  <%}%>
+                </select></td>
+            </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><div align="left" class="style3">Select Department (required) :
+                </div></td>
+                <td><select id="select2" name="department" class="text">
+                  <option>-Select-</option>
+                  <%for(int j=0;j<dep.size();j++){%>
+                  <option><%=dep.get(j)%></option>
+                  <%}%>
+                </select></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><div align="left" class="style3">Email Address (required) : </div></td>
+                <td><input id="email" name="email" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><div align="left" class="style3">Mobile Number (required) : </div></td>
+                <td><input id="mobile" name="mobile" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><span class="style3">
+                  <label for="label"> </label>
+                    <label for="label">
+                    </span>
+                  <div align="left" class="style3">Address : </div>
+                  <span class="style3">
+                  </label>
+                </span></td>
+                <td><textarea name="address" cols="45" id="address"></textarea></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><span class="style3">
+                  <label for="label"> </label>
+                    <label for="label">
+                    </span>
+                  <div align="left" class="style3">Date of Birth (required) : </div>
+                  <span class="style3">
+                  </label>
+                </span></td>
+                <td><input id="dob" name="dob" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><div align="left" class="style3">Select Gender (required) : </div></td>
+                <td><select id="s1" name="gender" class="text">
+                    <option>-Select-</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><span class="style3">
+                  <label for="label"> </label>
+                    <label for="label">
+                    </span>
+                  <div align="left" class="style3">Enter Pincode (required) : </div>
+                  <span class="style3">
+                  </label>
+                </span></td>
+                <td><input id="pincode" name="pincode" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><span class="style3">
+                  <label for="location"> </label>
+                    <label for="location">
+                    </span>
+                  <div align="left" class="style3">Enter Location (required) : </div>
+                  <span class="style3">
+                  </label>
+                </span></td>
+                <td><input id="loc" name="location" class="text" /></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FF0000" scope="row"><span class="style3">
+                  <label for="label"> </label>
+                    <label for="label">
+                    </span>
+                  <div align="left" class="style3">Select Profile Picture (required) : </div>
+                  <span class="style3">
+                  </label>
+                </span></td>
+                <td><input type="file" id="pic" name="pic" class="text" /></td>
+              </tr>
+              <tr>
+                <td height="79" scope="row">&nbsp;</td>
+                <td><input name="submit" type="submit" value="REGISTER" /></td>
+              </tr>
+            </table>
+            <p align="right"><a href="D_Login.jsp">Back</a></p>
+          </form>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star">Menu</h2>
+          <ul class="sb_menu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="P_Login.jsp">Patient</a></li>
+			<li><a href="D_Login.jsp">Doctor</a></li>
+			<li><a href="A_Login.jsp">Admin</a></li>
+          </ul>
+        </div>
+        <div class="gadget"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg"></div>
+  <div class="footer"></div>
+</div>
+<div align=center></div>
+</body>
+</html>
